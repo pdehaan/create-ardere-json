@@ -1,0 +1,30 @@
+{
+  "name": "create-ardere-json",
+  "description": "CLI tool to create an ardere.json file.",
+  "version": "1.0.0",
+  "author": "Peter deHaan <peter@deseloper.com> (https://about.me/peterdehaan)",
+  "bin": {
+    "create-ardere-json": "cli.js"
+  },
+  "bugs": {
+    "url": "https://github.com/pdehaan/create-ardere-json/issues"
+  },
+  "dependencies": {
+    "ini": "1.3.4",
+    "yargs": "8.0.2"
+  },
+  "devDependencies": {
+    "eslint": "4.3.0",
+    "prettier": "1.5.3"
+  },
+  "homepage": "https://github.com/pdehaan/create-ardere-json#readme",
+  "keywords": [],
+  "license": "WTFPL",
+  "main": "utils.js",
+  "repository": "pdehaan/create-ardere-json",
+  "scripts": {
+    "format": "prettier '*.js' --single-quote --write",
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
