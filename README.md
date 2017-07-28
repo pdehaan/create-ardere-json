@@ -27,7 +27,78 @@ $ create-ardere-json --count 9 --pause-between-steps 40 --options.env './dev.env
 ```
 
 ### Running locally:
+
 ```sh
 $ $(npm bin)/create-ardere-json --count 9 --pause-between-steps 100 --options.env './dev.env' --options.cmd 'tox -e linux'
 ```
 
+### Running with `npx`:
+
+If you're running npm@5.3, you can run `create-ardere-json` directly without installing it by running the following command:
+
+```sh
+$ npx pdehaan/create-ardere-json \
+    --count=3 \
+    --options.cmd='tox -e docker' \
+    --options.instance_type='t2.micro' \
+    --options.env.URL_SERVER='https://send.stage.mozaws.net/'
+```
+
+This will create the following output:
+
+```json
+{
+  "ecs_name": "{ecs_name}",
+  "name": "Loadtest",
+  "description": "{description}",
+  "metrics_options": {
+    "enabled": true,
+    "dashboard": {
+      "admin_user": "admin",
+      "admin_password": "testing",
+      "name": "{dashboard.name}",
+      "filename": "gf_basic_dashboard.json"
+    }
+  },
+  "steps": [
+    {
+      "env": {
+        "URL_SERVER": "https://send.stage.mozaws.net/"
+      },
+      "cmd": "tox -e docker",
+      "instance_count": 1,
+      "instance_type": "t2.micro",
+      "run_max_time": 300,
+      "container_name": "firefoxtesteng/{container_name}:latest",
+      "docker_series": "{docker_series}",
+      "name": "step-01"
+    },
+    {
+      "env": {
+        "URL_SERVER": "https://send.stage.mozaws.net/"
+      },
+      "cmd": "tox -e docker",
+      "instance_count": 1,
+      "instance_type": "t2.micro",
+      "run_max_time": 300,
+      "container_name": "firefoxtesteng/{container_name}:latest",
+      "docker_series": "{docker_series}",
+      "run_delay": 360,
+      "name": "step-02"
+    },
+    {
+      "env": {
+        "URL_SERVER": "https://send.stage.mozaws.net/"
+      },
+      "cmd": "tox -e docker",
+      "instance_count": 1,
+      "instance_type": "t2.micro",
+      "run_max_time": 300,
+      "container_name": "firefoxtesteng/{container_name}:latest",
+      "docker_series": "{docker_series}",
+      "run_delay": 720,
+      "name": "step-03"
+    }
+  ]
+}
+```
