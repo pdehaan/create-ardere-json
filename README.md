@@ -102,3 +102,30 @@ This will create the following output:
   ]
 }
 ```
+
+Instead of setting the environment variables individually, you can pass a path to a .env file, like so:
+
+```ini
+# send.env
+URL_SERVER=https://send.stage.mozaws.net
+MOLOTOV_PROCESSES=35
+MOLOTOV_WORKERS=10
+```
+
+```sh
+$ create-ardere-json \
+  --count=3 \
+  --pause-between-steps=100 \
+  --options.cmd='tox -e docker' \
+  --options.instance_type='t2.micro' \
+  --options.env='send.env' 
+```
+
+Or you can set the environment variables directly:
+
+```sh
+$ create-ardere-json \
+  --count=3 \
+  --pause-between-steps=100 \
+  --options.env='URL_SERVER=https://send.firefox.com'
+```
